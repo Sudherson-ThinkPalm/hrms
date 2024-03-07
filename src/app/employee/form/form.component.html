@@ -1,0 +1,75 @@
+<form [formGroup]="employeeForm">
+  <div>
+    <label>ID</label>
+    <input type="text" formControlName="id" />
+    <div *ngIf="submitted && employeeForm.controls['id']?.errors">
+      <span
+        *ngIf="submitted && employeeForm.controls['id']?.errors?.['required']"
+        >ID cannot be blank</span
+      >
+    </div>
+  </div>
+  <div>
+    <label>Name</label>
+    <input type="text" formControlName="name" />
+    <div *ngIf="submitted && employeeForm.controls['name']?.errors">
+      <span
+        *ngIf="submitted && employeeForm.controls['name']?.errors?.['required']"
+        >Name cannot be blank</span
+      >
+    </div>
+  </div>
+  <div>
+    <label>Gender</label>
+    <input type="radio" value="Male" name="gender" formControlName="gender" />
+    <label>Male</label>
+    <input type="radio" name="gender" value="Female" formControlName="gender" />
+    <label>Female</label>
+    <div *ngIf="submitted && employeeForm.controls['gender']?.errors">
+      <span
+        *ngIf="submitted && employeeForm.controls['gender']?.errors?.['required']"
+        >Gender cannot be blank</span
+      >
+    </div>
+  </div>
+  <div>
+    <label>Salary</label>
+    <input type="number" formControlName="salary" />
+    <div *ngIf="submitted && employeeForm.controls['salary']?.errors">
+      <span
+        *ngIf="submitted && employeeForm.controls['salary']?.errors?.['required']"
+        >Salary cannot be blank</span
+      >
+    </div>
+  </div>
+  <div>
+    <label>Department</label>
+    <select formControlName="department">
+      <option value="Developer">Developer</option>
+      <option value="Tester">Tester</option>
+    </select>
+    <div *ngIf="submitted && employeeForm.controls['department']?.errors">
+      <span
+        *ngIf="submitted && employeeForm.controls['department']?.errors?.['required']"
+        >Department cannot be blank</span
+      >
+    </div>
+  </div>
+  <div>
+    <label>Notes</label>
+    <textarea
+      name="note"
+      id="note"
+      cols="30"
+      rows="10"
+      formControlName="note"
+    ></textarea>
+    <div *ngIf="submitted && employeeForm.controls['note']?.errors">
+      <span
+        *ngIf="submitted && employeeForm.controls['note']?.errors?.['required']"
+        >Note cannot be blank</span
+      >
+    </div>
+  </div>
+  <button type="submit" *ngIf="!id" (click)="onSubmit()">Create</button>
+</form>
